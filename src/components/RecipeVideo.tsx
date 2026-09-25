@@ -168,7 +168,7 @@ export function RecipeVideo({ videoId, title }: { videoId: string; title: string
     if (!playerRef.current) return;
     if (muted) playerRef.current.unMute();
     else playerRef.current.mute();
-    setMuted(playerRef.current.isMuted());
+    setMuted(!muted);
   };
 
   const enterFullscreen = async () => {
