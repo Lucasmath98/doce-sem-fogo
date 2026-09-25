@@ -1,8 +1,10 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Clock, Scale, BookOpen } from "lucide-react";
 import { MobileShell } from "@/components/MobileShell";
+import { RecipeVideo } from "@/components/RecipeVideo";
 import { getRecipeBySlug } from "@/lib/recipes";
 import { recipeImage } from "@/lib/recipe-images";
+import { getRecipeVideo } from "@/lib/recipe-videos";
 
 export const Route = createFileRoute("/receita/$slug")({
   loader: ({ params }) => {
@@ -30,6 +32,7 @@ export const Route = createFileRoute("/receita/$slug")({
 
 function ReceitaPage() {
   const { recipe } = Route.useLoaderData();
+  const videoId = getRecipeVideo(recipe.title);
 
   return (
     <MobileShell>
@@ -75,6 +78,8 @@ function ReceitaPage() {
             )}
           </div>
         )}
+
+        {videoId && <RecipeVideo videoId={videoId} title={recipe.title} />}
 
         <section className="mt-7">
           <h2 className="text-lg font-bold">Ingredientes</h2>
