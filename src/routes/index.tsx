@@ -5,6 +5,8 @@ import { recipes, categories, recipesByCategorySlug } from "@/lib/recipes";
 import { images } from "@/lib/recipe-images";
 import { InstallButton } from "@/components/InstallButton";
 import { Sparkles, ChevronRight } from "lucide-react";
+import { MicrowaveCard } from "@/components/MicrowaveCard";
+import { microwaveRecipes, microwaveCover } from "@/lib/microwave-recipes";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -98,6 +100,32 @@ function Index() {
                   </p>
                 </div>
               </Link>
+            ))}
+            <Link
+              to="/micro-ondas"
+              className="col-span-2 overflow-hidden rounded-3xl border border-border bg-card shadow-card"
+            >
+              <img src={microwaveCover} alt="Micro-ondas" loading="lazy" className="h-28 w-full object-cover" />
+              <div className="p-3">
+                <p className="text-sm font-bold">Micro-ondas</p>
+                <p className="text-[11px] text-muted-foreground">
+                  {microwaveRecipes.length} receitas em vídeo
+                </p>
+              </div>
+            </Link>
+          </div>
+        </section>
+
+        <section>
+          <div className="mb-3 flex items-center justify-between">
+            <h2 className="text-base font-bold">Receitas de Micro-ondas</h2>
+            <Link to="/micro-ondas" className="flex items-center text-xs font-semibold text-muted-foreground">
+              ver tudo <ChevronRight className="size-4" />
+            </Link>
+          </div>
+          <div className="no-scrollbar -mx-5 flex gap-3 overflow-x-auto px-5 pb-1">
+            {microwaveRecipes.map((r) => (
+              <MicrowaveCard key={r.id} recipe={r} className="w-44 shrink-0" />
             ))}
           </div>
         </section>

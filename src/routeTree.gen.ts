@@ -14,6 +14,8 @@ import { Route as CategoriasRouteImport } from './routes/categorias'
 import { Route as EbooksRouteImport } from './routes/ebooks'
 import { Route as PerfilRouteImport } from './routes/perfil'
 import { Route as CategoriaSlugRouteImport } from './routes/categoria.$slug'
+import { Route as MicroOndasIndexRouteImport } from './routes/micro-ondas.index'
+import { Route as MicroOndasSlugRouteImport } from './routes/micro-ondas.$slug'
 import { Route as ReceitaSlugRouteImport } from './routes/receita.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +43,16 @@ const CategoriaSlugRoute = CategoriaSlugRouteImport.update({
   path: '/categoria/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MicroOndasIndexRoute = MicroOndasIndexRouteImport.update({
+  id: '/micro-ondas/',
+  path: '/micro-ondas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MicroOndasSlugRoute = MicroOndasSlugRouteImport.update({
+  id: '/micro-ondas/$slug',
+  path: '/micro-ondas/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReceitaSlugRoute = ReceitaSlugRouteImport.update({
   id: '/receita/$slug',
   path: '/receita/$slug',
@@ -53,7 +65,9 @@ export interface FileRoutesByFullPath {
   '/ebooks': typeof EbooksRoute
   '/perfil': typeof PerfilRoute
   '/categoria/$slug': typeof CategoriaSlugRoute
+  '/micro-ondas/$slug': typeof MicroOndasSlugRoute
   '/receita/$slug': typeof ReceitaSlugRoute
+  '/micro-ondas/': typeof MicroOndasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -61,7 +75,9 @@ export interface FileRoutesByTo {
   '/ebooks': typeof EbooksRoute
   '/perfil': typeof PerfilRoute
   '/categoria/$slug': typeof CategoriaSlugRoute
+  '/micro-ondas/$slug': typeof MicroOndasSlugRoute
   '/receita/$slug': typeof ReceitaSlugRoute
+  '/micro-ondas': typeof MicroOndasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -70,7 +86,9 @@ export interface FileRoutesById {
   '/ebooks': typeof EbooksRoute
   '/perfil': typeof PerfilRoute
   '/categoria/$slug': typeof CategoriaSlugRoute
+  '/micro-ondas/$slug': typeof MicroOndasSlugRoute
   '/receita/$slug': typeof ReceitaSlugRoute
+  '/micro-ondas/': typeof MicroOndasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -80,7 +98,9 @@ export interface FileRouteTypes {
     | '/ebooks'
     | '/perfil'
     | '/categoria/$slug'
+    | '/micro-ondas/$slug'
     | '/receita/$slug'
+    | '/micro-ondas/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -88,7 +108,9 @@ export interface FileRouteTypes {
     | '/ebooks'
     | '/perfil'
     | '/categoria/$slug'
+    | '/micro-ondas/$slug'
     | '/receita/$slug'
+    | '/micro-ondas'
   id:
     | '__root__'
     | '/'
@@ -96,7 +118,9 @@ export interface FileRouteTypes {
     | '/ebooks'
     | '/perfil'
     | '/categoria/$slug'
+    | '/micro-ondas/$slug'
     | '/receita/$slug'
+    | '/micro-ondas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -105,7 +129,9 @@ export interface RootRouteChildren {
   EbooksRoute: typeof EbooksRoute
   PerfilRoute: typeof PerfilRoute
   CategoriaSlugRoute: typeof CategoriaSlugRoute
+  MicroOndasSlugRoute: typeof MicroOndasSlugRoute
   ReceitaSlugRoute: typeof ReceitaSlugRoute
+  MicroOndasIndexRoute: typeof MicroOndasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -145,6 +171,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CategoriaSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/micro-ondas/': {
+      id: '/micro-ondas/'
+      path: '/micro-ondas'
+      fullPath: '/micro-ondas/'
+      preLoaderRoute: typeof MicroOndasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/micro-ondas/$slug': {
+      id: '/micro-ondas/$slug'
+      path: '/micro-ondas/$slug'
+      fullPath: '/micro-ondas/$slug'
+      preLoaderRoute: typeof MicroOndasSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/receita/$slug': {
       id: '/receita/$slug'
       path: '/receita/$slug'
@@ -161,7 +201,9 @@ const rootRouteChildren: RootRouteChildren = {
   EbooksRoute: EbooksRoute,
   PerfilRoute: PerfilRoute,
   CategoriaSlugRoute: CategoriaSlugRoute,
+  MicroOndasSlugRoute: MicroOndasSlugRoute,
   ReceitaSlugRoute: ReceitaSlugRoute,
+  MicroOndasIndexRoute: MicroOndasIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

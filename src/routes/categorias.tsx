@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { MobileShell } from "@/components/MobileShell";
 import { categories, recipesByCategorySlug } from "@/lib/recipes";
 import { images } from "@/lib/recipe-images";
+import { microwaveRecipes, microwaveCover } from "@/lib/microwave-recipes";
 
 export const Route = createFileRoute("/categorias")({
   head: () => ({
@@ -57,6 +58,19 @@ function Categorias() {
             </div>
           </Link>
         ))}
+        <Link to="/micro-ondas" className="block overflow-hidden rounded-3xl shadow-soft">
+          <div className="relative">
+            <img src={microwaveCover} alt="Micro-ondas" loading="lazy" className="h-40 w-full object-cover" />
+            <div className="absolute inset-0 bg-cocoa-gradient opacity-55" />
+            <div className="absolute inset-x-0 bottom-0 p-4">
+              <h2 className="text-xl font-extrabold text-primary-foreground">Micro-ondas</h2>
+              <p className="text-xs text-primary-foreground/80">Doces práticos, receitas em vídeo.</p>
+              <span className="mt-2 inline-block rounded-full bg-gold px-3 py-1 text-[11px] font-bold text-gold-foreground">
+                {microwaveRecipes.length} receitas em vídeo
+              </span>
+            </div>
+          </div>
+        </Link>
       </main>
     </MobileShell>
   );
