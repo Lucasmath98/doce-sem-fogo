@@ -89,7 +89,7 @@ function formatTime(value: number) {
 export function RecipeVideo({ videoId, title }: { videoId: string; title: string }) {
   const mountRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const playerRef = useRef<YouTubePlayer>();
+  const playerRef = useRef<YouTubePlayer | null>(null);
   const [started, setStarted] = useState(false);
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -143,7 +143,7 @@ export function RecipeVideo({ videoId, title }: { videoId: string; title: string
     return () => {
       active = false;
       playerRef.current?.destroy();
-      playerRef.current = undefined;
+      playerRef.current = null;
     };
   }, [started, videoId]);
 
