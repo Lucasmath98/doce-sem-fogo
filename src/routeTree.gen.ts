@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CategoriasRouteImport } from './routes/categorias'
+import { Route as EbooksRouteImport } from './routes/ebooks'
+import { Route as PerfilRouteImport } from './routes/perfil'
+import { Route as CategoriaSlugRouteImport } from './routes/categoria.$slug'
+import { Route as ReceitaSlugRouteImport } from './routes/receita.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CategoriasRoute = CategoriasRouteImport.update({
+  id: '/categorias',
+  path: '/categorias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EbooksRoute = EbooksRouteImport.update({
+  id: '/ebooks',
+  path: '/ebooks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerfilRoute = PerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategoriaSlugRoute = CategoriaSlugRouteImport.update({
+  id: '/categoria/$slug',
+  path: '/categoria/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReceitaSlugRoute = ReceitaSlugRouteImport.update({
+  id: '/receita/$slug',
+  path: '/receita/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/categorias': typeof CategoriasRoute
+  '/ebooks': typeof EbooksRoute
+  '/perfil': typeof PerfilRoute
+  '/categoria/$slug': typeof CategoriaSlugRoute
+  '/receita/$slug': typeof ReceitaSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/categorias': typeof CategoriasRoute
+  '/ebooks': typeof EbooksRoute
+  '/perfil': typeof PerfilRoute
+  '/categoria/$slug': typeof CategoriaSlugRoute
+  '/receita/$slug': typeof ReceitaSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/categorias': typeof CategoriasRoute
+  '/ebooks': typeof EbooksRoute
+  '/perfil': typeof PerfilRoute
+  '/categoria/$slug': typeof CategoriaSlugRoute
+  '/receita/$slug': typeof ReceitaSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/categorias'
+    | '/ebooks'
+    | '/perfil'
+    | '/categoria/$slug'
+    | '/receita/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/categorias'
+    | '/ebooks'
+    | '/perfil'
+    | '/categoria/$slug'
+    | '/receita/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/categorias'
+    | '/ebooks'
+    | '/perfil'
+    | '/categoria/$slug'
+    | '/receita/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CategoriasRoute: typeof CategoriasRoute
+  EbooksRoute: typeof EbooksRoute
+  PerfilRoute: typeof PerfilRoute
+  CategoriaSlugRoute: typeof CategoriaSlugRoute
+  ReceitaSlugRoute: typeof ReceitaSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/categorias': {
+      id: '/categorias'
+      path: '/categorias'
+      fullPath: '/categorias'
+      preLoaderRoute: typeof CategoriasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ebooks': {
+      id: '/ebooks'
+      path: '/ebooks'
+      fullPath: '/ebooks'
+      preLoaderRoute: typeof EbooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perfil': {
+      id: '/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof PerfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/categoria/$slug': {
+      id: '/categoria/$slug'
+      path: '/categoria/$slug'
+      fullPath: '/categoria/$slug'
+      preLoaderRoute: typeof CategoriaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/receita/$slug': {
+      id: '/receita/$slug'
+      path: '/receita/$slug'
+      fullPath: '/receita/$slug'
+      preLoaderRoute: typeof ReceitaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CategoriasRoute: CategoriasRoute,
+  EbooksRoute: EbooksRoute,
+  PerfilRoute: PerfilRoute,
+  CategoriaSlugRoute: CategoriaSlugRoute,
+  ReceitaSlugRoute: ReceitaSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
