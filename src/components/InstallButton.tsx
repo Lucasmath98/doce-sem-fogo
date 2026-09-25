@@ -2,9 +2,16 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { usePwaInstall } from "@/hooks/use-pwa-install";
 import { Download, Share, PlusSquare, Check } from "lucide-react";
 
-export function InstallButton({ label = "Instalar Receita Sem Fogo" }: { label?: string }) {
+export function InstallButton({
+  label = "Instalar Receita Sem Fogo",
+  hideWhenInstalled = false,
+}: {
+  label?: string;
+  hideWhenInstalled?: boolean;
+}) {
   const { install, isIOS, isInstalled, showIOSHelp, setShowIOSHelp } = usePwaInstall();
 
+  if (isInstalled && hideWhenInstalled) return null;
   if (isInstalled) {
     return (
       <div className="flex items-center justify-center gap-2 rounded-2xl bg-secondary px-5 py-3 text-sm font-semibold text-secondary-foreground">
