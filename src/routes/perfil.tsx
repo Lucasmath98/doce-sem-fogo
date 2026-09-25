@@ -60,7 +60,7 @@ function Perfil() {
             Instale na tela de início e abra suas receitas até sem internet.
           </p>
           <div className="mt-4">
-            <InstallButton />
+            <InstallButton label="Baixar app" hideWhenInstalled />
           </div>
         </section>
       </main>

@@ -14,31 +14,31 @@ export type Ebook = {
 export const ebooks: Ebook[] = [
   {
     title: "Recheios Lucrativos que Não Vão ao Fogo",
-    file: "/ebooks/recheios-lucrativos-1.pdf",
+    file: import.meta.env.BASE_URL + "ebooks/recheios-lucrativos-1.pdf",
     cover: cover1,
     subtitle: "Ganaches, cremes e mousses sem cozimento",
   },
   {
     title: "Recheios Rentáveis Que Não Precisam de Cozimento",
-    file: "/ebooks/recheios-rentaveis.pdf",
+    file: import.meta.env.BASE_URL + "ebooks/recheios-rentaveis.pdf",
     cover: cover2,
     subtitle: "Receitas rápidas com alto lucro",
   },
   {
     title: "Brigadeiro Sem Fogo",
-    file: "/ebooks/brigadeiro-sem-fogo.pdf",
+    file: import.meta.env.BASE_URL + "ebooks/brigadeiro-sem-fogo.pdf",
     cover: cover3,
     subtitle: "O clássico feito sem panela",
   },
   {
     title: "Receitas de Brigadeiros",
-    file: "/ebooks/receitas-brigadeiros.pdf",
+    file: import.meta.env.BASE_URL + "ebooks/receitas-brigadeiros.pdf",
     cover: cover4,
     subtitle: "Sabores gourmet para vender",
   },
   {
     title: "Recheios Lucrativos (linha Moça)",
-    file: "/ebooks/recheios-moca.pdf",
+    file: import.meta.env.BASE_URL + "ebooks/recheios-moca.pdf",
     cover: cover5,
     subtitle: "Cremes cremosos com leite condensado",
   },

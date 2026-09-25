@@ -3,6 +3,7 @@ import { MobileShell } from "@/components/MobileShell";
 import { RecipeCard } from "@/components/RecipeCard";
 import { recipes, categories, recipesByCategorySlug } from "@/lib/recipes";
 import { images } from "@/lib/recipe-images";
+import { InstallButton } from "@/components/InstallButton";
 import { Sparkles, ChevronRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -38,6 +39,7 @@ function Index() {
       </header>
 
       <main className="space-y-8 px-5 py-6">
+        <InstallButton label="Baixar app" hideWhenInstalled />
         {destaque ? (
           <section>
             <div className="mb-3 flex items-center gap-2">
