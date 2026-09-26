@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { BookOpen, LayoutGrid, CakeSlice } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { BookOpen, LayoutGrid, CakeSlice, GraduationCap, ChevronRight } from "lucide-react";
 import { MobileShell } from "@/components/MobileShell";
 import { InstallButton } from "@/components/InstallButton";
 import { recipes, categories } from "@/lib/recipes";
@@ -53,6 +53,20 @@ function Perfil() {
             </div>
           ))}
         </section>
+
+        <Link
+          to="/certificado"
+          className="flex items-center gap-3 rounded-3xl border border-gold bg-card p-4 shadow-card transition-transform active:scale-[0.98]"
+        >
+          <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-gold text-gold-foreground">
+            <GraduationCap className="size-6" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-sm font-extrabold text-cocoa">Meu Certificado</span>
+            <span className="block text-xs text-muted-foreground">Personalize e baixe em PDF</span>
+          </span>
+          <ChevronRight className="size-5 text-muted-foreground" />
+        </Link>
 
         <section className="rounded-3xl bg-muted p-5 text-center">
           <h2 className="text-base font-bold">Tenha o app no seu celular</h2>
