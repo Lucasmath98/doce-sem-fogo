@@ -4,7 +4,7 @@ import { RecipeCard } from "@/components/RecipeCard";
 import { recipes, categories, recipesByCategorySlug } from "@/lib/recipes";
 import { images } from "@/lib/recipe-images";
 import { InstallButton } from "@/components/InstallButton";
-import { Sparkles, ChevronRight } from "lucide-react";
+import { Sparkles, ChevronRight, GraduationCap } from "lucide-react";
 import { MicrowaveCard } from "@/components/MicrowaveCard";
 import { microwaveRecipes, microwaveCover } from "@/lib/microwave-recipes";
 
@@ -42,6 +42,12 @@ function Index() {
 
       <main className="space-y-8 px-5 py-6">
         <InstallButton label="Baixar app" hideWhenInstalled />
+        <Link
+          to="/certificado"
+          className="flex w-full items-center justify-center gap-2 rounded-2xl border border-gold bg-card px-5 py-3.5 text-sm font-bold text-cocoa shadow-card transition-transform active:scale-[0.98]"
+        >
+          <GraduationCap className="size-5 text-gold" /> Meu Certificado
+        </Link>
         {destaque ? (
           <section>
             <div className="mb-3 flex items-center gap-2">

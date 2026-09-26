@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CategoriasRouteImport } from './routes/categorias'
+import { Route as CertificadoRouteImport } from './routes/certificado'
 import { Route as EbooksRouteImport } from './routes/ebooks'
 import { Route as PerfilRouteImport } from './routes/perfil'
 import { Route as CategoriaSlugRouteImport } from './routes/categoria.$slug'
@@ -26,6 +27,11 @@ const IndexRoute = IndexRouteImport.update({
 const CategoriasRoute = CategoriasRouteImport.update({
   id: '/categorias',
   path: '/categorias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CertificadoRoute = CertificadoRouteImport.update({
+  id: '/certificado',
+  path: '/certificado',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EbooksRoute = EbooksRouteImport.update({
@@ -62,6 +68,7 @@ const ReceitaSlugRoute = ReceitaSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/categorias': typeof CategoriasRoute
+  '/certificado': typeof CertificadoRoute
   '/ebooks': typeof EbooksRoute
   '/perfil': typeof PerfilRoute
   '/categoria/$slug': typeof CategoriaSlugRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/categorias': typeof CategoriasRoute
+  '/certificado': typeof CertificadoRoute
   '/ebooks': typeof EbooksRoute
   '/perfil': typeof PerfilRoute
   '/categoria/$slug': typeof CategoriaSlugRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/categorias': typeof CategoriasRoute
+  '/certificado': typeof CertificadoRoute
   '/ebooks': typeof EbooksRoute
   '/perfil': typeof PerfilRoute
   '/categoria/$slug': typeof CategoriaSlugRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/categorias'
+    | '/certificado'
     | '/ebooks'
     | '/perfil'
     | '/categoria/$slug'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/categorias'
+    | '/certificado'
     | '/ebooks'
     | '/perfil'
     | '/categoria/$slug'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/categorias'
+    | '/certificado'
     | '/ebooks'
     | '/perfil'
     | '/categoria/$slug'
@@ -126,6 +138,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CategoriasRoute: typeof CategoriasRoute
+  CertificadoRoute: typeof CertificadoRoute
   EbooksRoute: typeof EbooksRoute
   PerfilRoute: typeof PerfilRoute
   CategoriaSlugRoute: typeof CategoriaSlugRoute
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/categorias'
       fullPath: '/categorias'
       preLoaderRoute: typeof CategoriasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certificado': {
+      id: '/certificado'
+      path: '/certificado'
+      fullPath: '/certificado'
+      preLoaderRoute: typeof CertificadoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ebooks': {
@@ -198,6 +218,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CategoriasRoute: CategoriasRoute,
+  CertificadoRoute: CertificadoRoute,
   EbooksRoute: EbooksRoute,
   PerfilRoute: PerfilRoute,
   CategoriaSlugRoute: CategoriaSlugRoute,

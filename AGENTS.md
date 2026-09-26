@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Generate completion certificates entirely in the browser with vector jsPDF output and an embedded serif font, so downloads remain private and sharp offline.
