@@ -48,7 +48,7 @@ function CertificatePage() {
   const isValid = hasMinimumLetters(trimmedName);
   const previewName = trimmedName || "Seu nome completo";
   const nameSizeClass = useMemo(() => {
-    if (previewName.length > 48) return "text-[clamp(12px,3.5vw,20px)]";
+    if (previewName.length > 48) return "text-[clamp(8px,2.8vw,17px)]";
     if (previewName.length > 32) return "text-[clamp(14px,4.2vw,24px)]";
     return "text-[clamp(17px,5vw,29px)]";
   }, [previewName]);
@@ -144,7 +144,7 @@ function CertificatePage() {
               </p>
               <div className="relative mt-1 h-px w-1/3 bg-gold" />
               <p className="relative mt-2 text-[clamp(6px,1.8vw,9px)] text-muted-foreground">Certificamos que</p>
-              <p className={`relative mt-0.5 max-w-[88%] truncate font-serif text-cocoa ${nameSizeClass}`}>{previewName}</p>
+              <p className={`relative mt-0.5 max-w-[92%] whitespace-nowrap font-serif text-cocoa ${nameSizeClass}`}>{previewName}</p>
               <p className="relative mt-1 max-w-[82%] text-[clamp(5px,1.55vw,8px)] leading-snug text-muted-foreground">
                 concluiu com êxito o curso Receita Sem Fogo: Recheios, Brigadeiros e Doces de Micro-ondas, com carga horária de 20 horas.
               </p>
